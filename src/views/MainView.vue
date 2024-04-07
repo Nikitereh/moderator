@@ -1,5 +1,11 @@
 <script lang="ts" setup>
 import AppTable from "@/components/AppTable.vue";
+import AppForm from "@/components/AppForm.vue";
+import {useFormStore} from "@/stores/form";
+import {storeToRefs} from "pinia";
+
+const { isVisible } = storeToRefs(useFormStore());
+const { toggleForm } = useFormStore();
 </script>
 
 <template>
@@ -7,10 +13,14 @@ import AppTable from "@/components/AppTable.vue";
        <app-table />
 
         <div class="">
-            <el-button type="primary">
+            <el-button type="primary" @click="toggleForm">
                 Добавить заход
             </el-button>
         </div>
+
+        <el-dialog v-model="isVisible">
+            <app-form />
+        </el-dialog>
     </main>
 </template>
 
