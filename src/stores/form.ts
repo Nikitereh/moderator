@@ -13,6 +13,27 @@ export const useFormStore = defineStore('form', () => {
         price_of_random: 0,
         comment: '',
     } as Form)
+    const users = ref([
+        {id: 1, name: 'IceCoffee', count_of_twins: 0, points: 0},
+        {id: 2, name: 'iichka', count_of_twins: 0, points: 0},
+        {id: 3, name: 'KissMyWeapon', count_of_twins: 0, points: 0},
+        {id: 4, name: 'Query', count_of_twins: 0, points: 0},
+        {id: 5, name: 'Клюквенный', count_of_twins: 0, points: 0},
+    ])
+    const damagers = ref([] as number[]);
+    const twins = ref([]);
+    const damagersSearch = ref('');
+    const twinsSearch = ref('');
+    const filteredDamagers = computed(() => {
+        const filteredArray = users.value
+            .filter((e) => e.name.toLowerCase().includes(damagersSearch.value.toLowerCase()))
+        return filteredArray.length ? filteredArray : users.value;
+    });
+    const filteredTwinks = computed(() => {
+        const filteredArray = users.value
+            .filter((e) => e.name.toLowerCase().includes(twinsSearch.value.toLowerCase()))
+        return filteredArray.length ? filteredArray : users.value;
+    })
     const isDisabled = ref(false);
     const isVisible = ref(false);
 
@@ -41,6 +62,12 @@ export const useFormStore = defineStore('form', () => {
         form.value.twins = [];
         form.value.count_of_randoms = 0;
         form.value.price_of_random = 0;
+        form.value.comment = '';
+
+        damagersSearch.value = '';
+        twinsSearch.value = '';
+        damagers.value = [];
+        twins.value = [];
     }
 
     const submitForm = () => {
@@ -54,10 +81,17 @@ export const useFormStore = defineStore('form', () => {
     }
 
     return {
+        users,
+        damagers,
+        twins,
         form,
+        damagersSearch,
+        twinsSearch,
         isDisabled,
         isAvailableCount,
         allMembersCount,
+        filteredDamagers,
+        filteredTwinks,
         isVisible,
         resetForm,
         toggleForm,

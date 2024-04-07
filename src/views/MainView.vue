@@ -5,7 +5,7 @@ import {useFormStore} from "@/stores/form";
 import {storeToRefs} from "pinia";
 
 const { isVisible } = storeToRefs(useFormStore());
-const { toggleForm } = useFormStore();
+const { toggleForm, resetForm } = useFormStore();
 </script>
 
 <template>
@@ -18,7 +18,7 @@ const { toggleForm } = useFormStore();
             </el-button>
         </div>
 
-        <el-dialog v-model="isVisible">
+        <el-dialog v-model="isVisible" @closed="resetForm">
             <app-form />
         </el-dialog>
     </main>
