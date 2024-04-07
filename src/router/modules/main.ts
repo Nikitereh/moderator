@@ -4,7 +4,7 @@ import { Layout } from '@/enums/Layout'
 export default [
     {
         path: '/',
-        name: 'main',
+        name: 'table',
         component: () => import('@/views/MainView.vue'),
         meta: {
             layout: Layout.MAIN,
