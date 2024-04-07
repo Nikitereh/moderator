@@ -41,6 +41,7 @@ const toggleMenu = () => {
                 v-for="item in menuItems"
                 :key="item.id"
                 :index="item.name"
+                @click="$router.push({ name: item.name })"
             >
                 <el-icon>
                     <Document v-if="item.name === 'table'"/>
@@ -58,23 +59,29 @@ const toggleMenu = () => {
 
 .menu {
     max-width: 200px;
+    display: flex;
+    flex-direction: column;
 
     :deep(.el-menu) {
         background: $grey-bg-color;
         border: none;
+        flex-grow: 1;
     }
 
     :deep(.el-menu-item) {
         font-size: 15px;
+        color: #606060;
+
+        &.is-active {
+            color: $secondary-bg-color;
+        }
     }
 
     &__toggle {
         width: 64px;
-        background: $grey-bg-color;
         cursor: pointer;
         transition: .3s;
         padding: 5px 0;
-        border-bottom: 2px solid #505050;
 
         &:hover {
             background: #505050;
