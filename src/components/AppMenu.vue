@@ -59,6 +59,8 @@ const toggleMenu = () => {
 
 .menu {
     max-width: 200px;
+    height: 100%;
+    position: fixed;
     display: flex;
     flex-direction: column;
 
