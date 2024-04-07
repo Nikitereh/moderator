@@ -1,8 +1,16 @@
 <script lang="ts" setup>
+import AppTable from "@/components/AppTable.vue";
 </script>
 
 <template>
-    <div class="main">
-       123
-    </div>
+    <main class="main">
+       <app-table />
+    </main>
 </template>
+
+<style lang="scss" scoped>
+.main {
+    padding: 2em;
+    margin: 0 auto;
+}
+</style>
