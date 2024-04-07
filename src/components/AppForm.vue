@@ -3,7 +3,8 @@ import {useFormStore} from "@/stores/form";
 import {storeToRefs} from "pinia";
 import {ref, watch} from "vue";
 
-const {form, isDisabled, } = storeToRefs(useFormStore());
+const {form, isDisabled} = storeToRefs(useFormStore());
+const {submitForm, resetForm} = useFormStore();
 const users = ref([
     {id: 1, name: 'IceCoffee', count_of_twins: 0, points: 0},
     {id: 2, name: 'iichka', count_of_twins: 0, points: 0},
@@ -39,7 +40,7 @@ watch(damagers, () => {
                 </el-radio-group>
             </el-form-item>
 
-            <el-form-item label="ДД" required>
+            <el-form-item label="Основные персонажи" required>
                 <el-select
                     v-model="damagers"
                     multiple
@@ -110,8 +111,10 @@ watch(damagers, () => {
 
             <el-form-item>
                 <div class="form__controls">
-                    <el-button type="text">Отмена</el-button>
-                    <el-button type="primary" :disabled="isDisabled">Подвтердить</el-button>
+                    <el-button type="text" @click="resetForm">Отмена</el-button>
+                    <el-button type="primary" :disabled="isDisabled" @click="submitForm">
+                        Подвтердить
+                    </el-button>
                 </div>
             </el-form-item>
         </el-scrollbar>

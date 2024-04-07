@@ -32,13 +32,11 @@ onMounted(async () => {
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="block1" label="block1" />
-            <el-table-column prop="block2" label="block2" />
-            <el-table-column prop="block3" label="block3" />
-            <el-table-column prop="block4" label="block4" />
-            <el-table-column prop="twin" label="twin" />
-            <el-table-column prop="all" label="Всего" />
-            <el-table-column prop="result" label="Итог" />
+            <el-table-column prop="block1" label="Баллы за заходы" />
+            <el-table-column prop="twin" label="Твины (кол-во)" />
+            <el-table-column prop="block2" label="Баллы за твинов" />
+            <el-table-column prop="all" label="Всего баллов" />
+            <el-table-column prop="result" label="Итог (адена)" />
         </el-table>
     </div>
 </template>
