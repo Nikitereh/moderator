@@ -1,12 +1,14 @@
 import auth from '@/router/middlewares/auth';
+import { Layout } from '@/enums/Layout'
 
 export default [
     {
         path: '/',
         name: 'main',
-        component: () => import('@/components/HelloWorld.vue'),
+        component: () => import('@/views/MainView.vue'),
         meta: {
-            middleware: [auth]
+            layout: Layout.MAIN,
+            middleware: [auth],
         }
     },
 ];

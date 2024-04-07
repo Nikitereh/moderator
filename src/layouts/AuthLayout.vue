@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-
 </script>
 
 <template>
-    <div class="auth">
-        123
+    <div class="layout layout--auth">
+        <slot />
     </div>
 </template>
