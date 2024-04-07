@@ -3,7 +3,10 @@
 </script>
 
 <template>
-    <div>
-        settings
-    </div>
+    <main class="container">
+        Раздел в разработке
+    </main>
 </template>
+
+<style lang="scss" scoped>
+</style>

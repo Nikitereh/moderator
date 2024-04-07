@@ -3,14 +3,17 @@ import AppTable from "@/components/AppTable.vue";
 </script>
 
 <template>
-    <main class="main">
+    <main class="container">
        <app-table />
+
+        <div class="">
+            <el-button type="primary">
+                Добавить заход
+            </el-button>
+        </div>
     </main>
 </template>
 
 <style lang="scss" scoped>
-.main {
-    padding: 2em;
-    margin: 0 auto;
-}
+
 </style>

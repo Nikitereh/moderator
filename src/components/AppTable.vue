@@ -13,7 +13,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="wrapper">
+    <div class="table-wrapper">
         <el-table
             :data="tableData"
             :row-class-name="'table__row'"
@@ -45,6 +45,9 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
+.table-wrapper {
+    padding-left: 32px;
+}
 
 .table {
     color: #fff;

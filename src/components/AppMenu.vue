@@ -6,6 +6,9 @@ import {
     DArrowRight,
 } from '@element-plus/icons-vue';
 import {ref} from "vue";
+import {useRouter} from "vue-router";
+
+const router = useRouter();
 
 const isCollapse = ref(true)
 const menuItems = ref([
@@ -16,6 +19,10 @@ const menuItems = ref([
 
 const toggleMenu = () => {
     isCollapse.value = !isCollapse.value;
+}
+
+const goToLink = async (name: string) => {
+    await router.push({ name })
 }
 </script>
 
@@ -41,7 +48,7 @@ const toggleMenu = () => {
                 v-for="item in menuItems"
                 :key="item.id"
                 :index="item.name"
-                @click="$router.push({ name: item.name })"
+                @click="goToLink(item.name)"
             >
                 <el-icon>
                     <Document v-if="item.name === 'table'"/>
@@ -63,6 +70,7 @@ const toggleMenu = () => {
     position: fixed;
     display: flex;
     flex-direction: column;
+    z-index: 10;
 
     :deep(.el-menu) {
         background: $grey-bg-color;
