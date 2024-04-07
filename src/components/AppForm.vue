@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {useFormStore} from "@/stores/form";
 import {storeToRefs} from "pinia";
-import {ref, watch} from "vue";
+import {computed, ref, watch} from "vue";
 
 const {form, isDisabled} = storeToRefs(useFormStore());
 const {submitForm, resetForm} = useFormStore();
@@ -12,9 +12,20 @@ const users = ref([
     {id: 4, name: 'Query', count_of_twins: 0, points: 0},
     {id: 5, name: 'Клюквенный', count_of_twins: 0, points: 0},
 ])
+const filteredDamagers = computed(() => {
+    const filteredArray = users.value.filter((e) => e.name.toLowerCase().includes(damagersSearch.value.toLowerCase()))
+    return filteredArray.length ? filteredArray : users.value;
+});
+
+const filteredTwinks = computed(() => {
+    const filteredArray = users.value.filter((e) => e.name.toLowerCase().includes(twinsSearch.value.toLowerCase()))
+    return filteredArray.length ? filteredArray : users.value;
+});
 
 const damagers = ref([] as number[]);
 const twins = ref([]);
+const damagersSearch = ref('');
+const twinsSearch = ref('');
 
 const filterById = (items: any, idArr: number[]) => {
     return items.filter(item => idArr.includes(item.id));
@@ -48,9 +59,11 @@ watch(damagers, () => {
                     collapse-tags-tooltip
                     :max-collapse-tags="3"
                     placeholder="Select"
+                    class="form__select"
                 >
+                    <el-input v-model="damagersSearch" size="default" class="form__input-search" placeholder="Поиск" />
                     <el-option
-                        v-for="user in users"
+                        v-for="user in filteredDamagers"
                         :key="user.id"
                         :value="user.id"
                         :label="user.name"
@@ -79,9 +92,11 @@ watch(damagers, () => {
                     collapse-tags-tooltip
                     :max-collapse-tags="3"
                     placeholder="Select"
+                    class="form__select"
                 >
+                    <el-input v-model="twinsSearch" size="default" class="form__input-search" placeholder="Поиск" />
                     <el-option
-                        v-for="user in users"
+                        v-for="user in filteredTwinks"
                         :key="user.id"
                         :value="user.id"
                         :label="user.name"
@@ -174,6 +189,10 @@ watch(damagers, () => {
 
     :deep(.el-radio__label) {
         font-size: 16px;
+    }
+
+    &__input-search {
+        padding: 0 10px;
     }
 }
 </style>
