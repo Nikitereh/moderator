@@ -11,6 +11,7 @@ export const useFormStore = defineStore('form', () => {
         twins: [],
         count_of_randoms: 0,
         price_of_random: 0,
+        comment: '',
     } as Form)
     const isDisabled = ref(false);
     const isVisible = ref(false);

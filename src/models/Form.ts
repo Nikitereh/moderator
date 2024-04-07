@@ -4,4 +4,5 @@ export interface Form {
     twins: [],
     count_of_randoms: 0,
     price_of_random: 0,
+    comment: '',
 }

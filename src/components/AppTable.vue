@@ -32,11 +32,11 @@ onMounted(async () => {
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="block1" label="Баллы за заходы" />
-            <el-table-column prop="twin" label="Твины (кол-во)" />
-            <el-table-column prop="block2" label="Баллы за твинов" />
-            <el-table-column prop="all" label="Всего баллов" />
-            <el-table-column prop="result" label="Итог (адена)" />
+            <el-table-column prop="block1" label="Баллы за заходы" width="140" />
+            <el-table-column prop="twin" label="Твины (кол-во)" width="140" />
+            <el-table-column prop="block2" label="Баллы за твинов" width="140" />
+            <el-table-column prop="all" label="Всего баллов" width="140" />
+            <el-table-column prop="result" label="Итог (адена)" width="140" />
         </el-table>
     </div>
 </template>
@@ -44,7 +44,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 .table-wrapper {
-    padding-left: 32px;
+    padding-left: 64px;
 }
 
 .table {

@@ -84,7 +84,7 @@ watch(damagers, () => {
                 </div>
             </el-form-item>
 
-            <el-form-item label="Твины">
+            <el-form-item label="Твины" required>
                 <el-select
                     v-model="twins"
                     multiple
@@ -122,6 +122,15 @@ watch(damagers, () => {
 
             <el-form-item v-if="form.count_of_randoms > 0" label="Стоимость одного рандома (кк)">
                 <el-input-number v-model="form.price_of_random" :min="0" :max="99" size="default"/>
+            </el-form-item>
+
+            <el-form-item>
+                <el-input
+                    v-model="form.comment"
+                    :rows="3"
+                    type="textarea"
+                    placeholder="Комментарий (не обязательно)"
+                />
             </el-form-item>
 
             <el-form-item>
@@ -189,6 +198,10 @@ watch(damagers, () => {
 
     :deep(.el-radio__label) {
         font-size: 16px;
+    }
+
+    :deep(.el-scrollbar) {
+        padding: 0 10px;
     }
 
     &__input-search {
