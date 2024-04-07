@@ -8,26 +8,26 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
-    const authStore = useAuthStore();
-
-    if (!to.meta.middleware) {
-        return next();
-    }
-    const middleware = to.meta.middleware;
-
-    const context = {
-        to,
-        from,
-        next,
-        authStore,
-    };
-
-    return middleware[0]({
-        ...context,
-        next: middlewarePipeline(context, middleware, 1),
-    });
-});
+// router.beforeEach((to, from, next) => {
+    // const authStore = useAuthStore();
+    //
+    // if (!to.meta.middleware) {
+    //     return next();
+    // }
+    // const middleware = to.meta.middleware;
+    //
+    // const context = {
+    //     to,
+    //     from,
+    //     next,
+    //     authStore,
+    // };
+    //
+    // return middleware[0]({
+    //     ...context,
+    //     next: middlewarePipeline(context, middleware, 1),
+    // });
+// });
 
 
 export default router;
