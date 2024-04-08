@@ -16,8 +16,6 @@ const {
 } = storeToRefs(useFormStore());
 const {submitForm, resetForm} = useFormStore();
 
-
-
 const filterById = (items: any, idArr: number[]) => {
     return items.filter(item => idArr.includes(item.id));
 }

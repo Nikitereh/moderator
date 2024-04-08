@@ -57,6 +57,8 @@ export const useFormStore = defineStore('form', () => {
     }
 
     const resetForm = () => {
+        form.value.twins.forEach((e: any) => e.count_of_twins = 0);
+        form.value.damagers.forEach((e: any) => e.points = 0);
         form.value.damagers = [];
         form.value.type = 'valakas';
         form.value.twins = [];
