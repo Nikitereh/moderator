@@ -7,14 +7,17 @@ import {
 } from '@element-plus/icons-vue';
 import {ref} from "vue";
 import {useRouter} from "vue-router";
+import {useAuthStore} from "@/stores/auth";
+import {storeToRefs} from "pinia";
 
 const router = useRouter();
+const { isLoggedIn } = storeToRefs(useAuthStore());
 
 const isCollapse = ref(true)
 const menuItems = ref([
-    { id: '1', title: 'Таблица', name: 'table', icon: Document },
-    { id: '2', title: 'КЛ вход', name: 'auth', icon: Key },
-    { id: '3', title: 'Настройки', name: 'settings', icon: Setting },
+    { id: '1', title: 'Таблица', name: 'table', shown: true },
+    { id: '2', title: 'КЛ вход', name: 'auth', shown: !isLoggedIn.value },
+    { id: '3', title: 'Настройки', name: 'settings', shown: true },
 ]);
 
 const toggleMenu = () => {
@@ -28,6 +31,7 @@ const goToLink = async (name: string) => {
 
 <template>
     <aside class="menu">
+        {{ isLoggedIn }}
         <div class="menu__toggle" @click="toggleMenu">
             <el-icon
                 color="#409eff"
@@ -44,19 +48,23 @@ const goToLink = async (name: string) => {
             class="el-menu-vertical-demo"
             :collapse="isCollapse"
         >
-            <el-menu-item
+            <template
                 v-for="item in menuItems"
                 :key="item.id"
-                :index="item.name"
-                @click="goToLink(item.name)"
             >
-                <el-icon>
-                    <Document v-if="item.name === 'table'"/>
-                    <Key v-if="item.name === 'auth'"/>
-                    <Setting v-if="item.name === 'settings'"/>
-                </el-icon>
-                <template #title>{{ item.title }}</template>
-            </el-menu-item>
+                <el-menu-item
+                    v-if="item.shown"
+                    :index="item.name"
+                    @click="goToLink(item.name)"
+                >
+                    <el-icon>
+                        <Document v-if="item.name === 'table'"/>
+                        <Key v-if="item.name === 'auth'"/>
+                        <Setting v-if="item.name === 'settings'"/>
+                    </el-icon>
+                    <template #title>{{ item.title }}</template>
+                </el-menu-item>
+            </template>
         </el-menu>
     </aside>
 </template>

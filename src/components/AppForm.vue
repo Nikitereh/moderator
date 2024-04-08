@@ -136,45 +136,6 @@ watch(damagers, () => {
 
 <style lang="scss" scoped>
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    &__title {
-        font-weight: 600;
-        font-size: 20px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid #e8e8e8;
-    }
-
-    &__item-sublist {
-        width: 100%;
-        margin-top: 7px;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-    }
-
-    &__item-sub {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 13px;
-        border-radius: 4px;
-        padding: 4px 8px;
-        border: 1px solid #e8e8e8;
-
-        &-name {
-            line-height: 20px;
-        }
-    }
-
-    &__controls {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
-
     :deep(.el-form-item) {
         flex-direction: column;
     }
@@ -190,10 +151,6 @@ watch(damagers, () => {
     }
 
     :deep(.el-scrollbar) {
-        padding: 0 10px;
-    }
-
-    &__input-search {
         padding: 0 10px;
     }
 }
