@@ -31,7 +31,6 @@ const goToLink = async (name: string) => {
 
 <template>
     <aside class="menu">
-        {{ isLoggedIn }}
         <div class="menu__toggle" @click="toggleMenu">
             <el-icon
                 color="#409eff"
