@@ -31,8 +31,6 @@ const { submitForm } = useAuthStore();
 
 <style lang="scss" scoped>
 .form {
-    min-width: 400px;
-
     :deep(.el-form-item) {
         flex-direction: column;
     }

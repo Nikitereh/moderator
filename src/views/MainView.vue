@@ -12,15 +12,17 @@ const { toggleForm, resetForm } = useFormStore();
 
 <template>
     <main class="container">
-       <app-table />
+        <div class="content">
+            <app-table />
 
-        <div class="controls">
-            <el-button type="primary" @click="toggleForm">
-                Добавить заход
-            </el-button>
-            <el-button v-if="isLoggedIn" type="primary">
-                Редактировать
-            </el-button>
+            <div class="controls">
+                <el-button type="primary" @click="toggleForm">
+                    Добавить заход
+                </el-button>
+                <el-button v-if="isLoggedIn" type="primary">
+                    Редактировать
+                </el-button>
+            </div>
         </div>
 
         <el-dialog v-model="isVisible" @closed="resetForm">
@@ -38,5 +40,23 @@ const { toggleForm, resetForm } = useFormStore();
 
 :deep(.el-button) {
     margin: 0;
+}
+
+.content {
+    padding-left: 64px;
+    display: flex;
+    gap: 24px;
+}
+
+@media (max-width: 1299px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 </style>

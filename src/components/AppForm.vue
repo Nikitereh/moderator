@@ -153,5 +153,10 @@ watch(damagers, () => {
     :deep(.el-scrollbar) {
         padding: 0 10px;
     }
+
+    &__controls {
+        display: flex;
+        gap: 16px
+    }
 }
 </style>

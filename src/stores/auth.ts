@@ -32,6 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
     const submitForm = async () => {
         try {
             isLoading.value = true;
+            AuthStorage.saveToken('test-token', true)
             await new Promise(resolve => {
                 setTimeout(() => {
                     resolve(form);
@@ -39,7 +40,6 @@ export const useAuthStore = defineStore('auth', () => {
             })
             isLoading.value = false;
             resetForm();
-            AuthStorage.saveToken('test-token', true)
             await router.push({name: 'table'});
         } catch (err: any) {
             ElNotification({

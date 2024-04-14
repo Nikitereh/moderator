@@ -4,7 +4,7 @@ import AuthForm from "@/components/auth/AuthForm.vue";
 
 <template>
     <div class="auth">
-        <el-card>
+        <el-card class="auth__card">
             <auth-form />
         </el-card>
     </div>
@@ -16,5 +16,10 @@ import AuthForm from "@/components/auth/AuthForm.vue";
     height: 100%;
     align-items: center;
     justify-content: center;
+
+    &__card {
+        max-width: 400px;
+        width: 100%;
+    }
 }
 </style>

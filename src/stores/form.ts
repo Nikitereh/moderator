@@ -70,6 +70,7 @@ export const useFormStore = defineStore('form', () => {
         twinsSearch.value = '';
         damagers.value = [];
         twins.value = [];
+        isVisible.value = false;
     }
 
     const submitForm = () => {

@@ -4,8 +4,8 @@ import {useTableStore} from "@/stores/table";
 import {storeToRefs} from "pinia";
 import {Star} from '@element-plus/icons-vue'
 
-const { fetchTableData } = useTableStore();
-const { isLoading, tableData } = storeToRefs(useTableStore());
+const {fetchTableData} = useTableStore();
+const {isLoading, tableData} = storeToRefs(useTableStore());
 
 onMounted(async () => {
     await fetchTableData();
@@ -13,39 +13,34 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="table-wrapper">
-        <el-table
-            :data="tableData"
-            :row-class-name="'table__row'"
-            class="table"
-            border
-            style="width: 100%;"
-        >
-            <el-table-column type="index" width="50" label="№" />
-            <el-table-column prop="name" label="Ник" width="200">
-                <template #default={row}>
-                    <div class="table__cell-name">
-                        <span>{{ row.name }}</span>
-                        <el-icon v-if="row.hasIcon" size="large">
-                            <Star />
-                        </el-icon>
-                    </div>
-                </template>
-            </el-table-column>
-            <el-table-column prop="block1" label="Баллы за заходы" width="140" />
-            <el-table-column prop="twin" label="Твины (кол-во)" width="140" />
-            <el-table-column prop="block2" label="Баллы за твинов" width="140" />
-            <el-table-column prop="all" label="Всего баллов" width="140" />
-            <el-table-column prop="result" label="Итог (адена)" width="140" />
-        </el-table>
-    </div>
+    <el-table
+        :data="tableData"
+        :row-class-name="'table__row'"
+        class="table"
+        border
+        style="width: 100%;"
+    >
+        <el-table-column type="index" width="50" label="№"/>
+        <el-table-column prop="name" label="Ник" width="170">
+            <template #default={row}>
+                <div class="table__cell-name">
+                    <span>{{ row.name }}</span>
+                    <el-icon v-if="row.hasIcon" size="large">
+                        <Star/>
+                    </el-icon>
+                </div>
+            </template>
+        </el-table-column>
+        <el-table-column prop="block1" label="Баллы за заходы" width="140"/>
+        <el-table-column prop="twin" label="Твины (кол-во)" width="140"/>
+        <el-table-column prop="block2" label="Баллы за твинов" width="140"/>
+        <el-table-column prop="all" label="Всего баллов" width="140"/>
+        <el-table-column prop="result" label="Итог (адена)" width="140"/>
+    </el-table>
 </template>
 
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
-.table-wrapper {
-    padding-left: 64px;
-}
 
 .table {
     color: #fff;
